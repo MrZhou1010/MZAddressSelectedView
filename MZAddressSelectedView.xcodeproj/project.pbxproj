@@ -1,0 +1,693 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ACB2B6015773E5BABB25B4C7 /* Pods_MZAddressSelectedView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 216878212DEF931B188697F9 /* Pods_MZAddressSelectedView.framework */; };
+		B433DE95237550AE00F4F49B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B433DE94237550AE00F4F49B /* AppDelegate.swift */; };
+		B433DE97237550AE00F4F49B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B433DE96237550AE00F4F49B /* ViewController.swift */; };
+		B433DE9A237550AE00F4F49B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B433DE98237550AE00F4F49B /* Main.storyboard */; };
+		B433DE9C237550BB00F4F49B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B433DE9B237550BB00F4F49B /* Assets.xcassets */; };
+		B433DE9F237550BB00F4F49B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B433DE9D237550BB00F4F49B /* LaunchScreen.storyboard */; };
+		B433DEAA237550BB00F4F49B /* MZAddressSelectedViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B433DEA9237550BB00F4F49B /* MZAddressSelectedViewTests.swift */; };
+		B433DEB5237550BB00F4F49B /* MZAddressSelectedViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B433DEB4237550BB00F4F49B /* MZAddressSelectedViewUITests.swift */; };
+		B433DEC42375514700F4F49B /* MZAddressSelectedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B433DEC32375514700F4F49B /* MZAddressSelectedView.swift */; };
+		B433DEC72375615100F4F49B /* MZAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B433DEC62375615100F4F49B /* MZAddressModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B433DEA6237550BB00F4F49B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B433DE89237550AE00F4F49B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B433DE90237550AE00F4F49B;
+			remoteInfo = MZAddressSelectedView;
+		};
+		B433DEB1237550BB00F4F49B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B433DE89237550AE00F4F49B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B433DE90237550AE00F4F49B;
+			remoteInfo = MZAddressSelectedView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		216878212DEF931B188697F9 /* Pods_MZAddressSelectedView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MZAddressSelectedView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7657571D8C3BDE58A82974F1 /* Pods-MZAddressSelectedView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MZAddressSelectedView.release.xcconfig"; path = "Target Support Files/Pods-MZAddressSelectedView/Pods-MZAddressSelectedView.release.xcconfig"; sourceTree = "<group>"; };
+		B433DE91237550AE00F4F49B /* MZAddressSelectedView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MZAddressSelectedView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B433DE94237550AE00F4F49B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B433DE96237550AE00F4F49B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B433DE99237550AE00F4F49B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B433DE9B237550BB00F4F49B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B433DE9E237550BB00F4F49B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B433DEA0237550BB00F4F49B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B433DEA5237550BB00F4F49B /* MZAddressSelectedViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MZAddressSelectedViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B433DEA9237550BB00F4F49B /* MZAddressSelectedViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAddressSelectedViewTests.swift; sourceTree = "<group>"; };
+		B433DEAB237550BB00F4F49B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B433DEB0237550BB00F4F49B /* MZAddressSelectedViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MZAddressSelectedViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B433DEB4237550BB00F4F49B /* MZAddressSelectedViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAddressSelectedViewUITests.swift; sourceTree = "<group>"; };
+		B433DEB6237550BB00F4F49B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B433DEC32375514700F4F49B /* MZAddressSelectedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAddressSelectedView.swift; sourceTree = "<group>"; };
+		B433DEC62375615100F4F49B /* MZAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZAddressModel.swift; sourceTree = "<group>"; };
+		F26BBEDD8C20CB7758535936 /* Pods-MZAddressSelectedView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MZAddressSelectedView.debug.xcconfig"; path = "Target Support Files/Pods-MZAddressSelectedView/Pods-MZAddressSelectedView.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B433DE8E237550AE00F4F49B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACB2B6015773E5BABB25B4C7 /* Pods_MZAddressSelectedView.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B433DEA2237550BB00F4F49B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B433DEAD237550BB00F4F49B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1C61B85CCB3C41E42C690186 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F26BBEDD8C20CB7758535936 /* Pods-MZAddressSelectedView.debug.xcconfig */,
+				7657571D8C3BDE58A82974F1 /* Pods-MZAddressSelectedView.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B433DE88237550AE00F4F49B = {
+			isa = PBXGroup;
+			children = (
+				B433DE93237550AE00F4F49B /* MZAddressSelectedView */,
+				B433DEA8237550BB00F4F49B /* MZAddressSelectedViewTests */,
+				B433DEB3237550BB00F4F49B /* MZAddressSelectedViewUITests */,
+				B433DE92237550AE00F4F49B /* Products */,
+				1C61B85CCB3C41E42C690186 /* Pods */,
+				C7166B3589B927784805C536 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B433DE92237550AE00F4F49B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B433DE91237550AE00F4F49B /* MZAddressSelectedView.app */,
+				B433DEA5237550BB00F4F49B /* MZAddressSelectedViewTests.xctest */,
+				B433DEB0237550BB00F4F49B /* MZAddressSelectedViewUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B433DE93237550AE00F4F49B /* MZAddressSelectedView */ = {
+			isa = PBXGroup;
+			children = (
+				B433DEC92375653300F4F49B /* Tools */,
+				B433DEC52375611600F4F49B /* Model */,
+				B433DEC22375510200F4F49B /* MZAddressSelectedView */,
+				B433DE94237550AE00F4F49B /* AppDelegate.swift */,
+				B433DE96237550AE00F4F49B /* ViewController.swift */,
+				B433DE98237550AE00F4F49B /* Main.storyboard */,
+				B433DE9B237550BB00F4F49B /* Assets.xcassets */,
+				B433DE9D237550BB00F4F49B /* LaunchScreen.storyboard */,
+				B433DEA0237550BB00F4F49B /* Info.plist */,
+			);
+			path = MZAddressSelectedView;
+			sourceTree = "<group>";
+		};
+		B433DEA8237550BB00F4F49B /* MZAddressSelectedViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				B433DEA9237550BB00F4F49B /* MZAddressSelectedViewTests.swift */,
+				B433DEAB237550BB00F4F49B /* Info.plist */,
+			);
+			path = MZAddressSelectedViewTests;
+			sourceTree = "<group>";
+		};
+		B433DEB3237550BB00F4F49B /* MZAddressSelectedViewUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B433DEB4237550BB00F4F49B /* MZAddressSelectedViewUITests.swift */,
+				B433DEB6237550BB00F4F49B /* Info.plist */,
+			);
+			path = MZAddressSelectedViewUITests;
+			sourceTree = "<group>";
+		};
+		B433DEC22375510200F4F49B /* MZAddressSelectedView */ = {
+			isa = PBXGroup;
+			children = (
+				B433DEC32375514700F4F49B /* MZAddressSelectedView.swift */,
+			);
+			path = MZAddressSelectedView;
+			sourceTree = "<group>";
+		};
+		B433DEC52375611600F4F49B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B433DEC62375615100F4F49B /* MZAddressModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B433DEC92375653300F4F49B /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		C7166B3589B927784805C536 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				216878212DEF931B188697F9 /* Pods_MZAddressSelectedView.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B433DE90237550AE00F4F49B /* MZAddressSelectedView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B433DEB9237550BB00F4F49B /* Build configuration list for PBXNativeTarget "MZAddressSelectedView" */;
+			buildPhases = (
+				B39E2C73508865C8196BA665 /* [CP] Check Pods Manifest.lock */,
+				B433DE8D237550AE00F4F49B /* Sources */,
+				B433DE8E237550AE00F4F49B /* Frameworks */,
+				B433DE8F237550AE00F4F49B /* Resources */,
+				63F77BED75E9E676E73D165A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MZAddressSelectedView;
+			productName = MZAddressSelectedView;
+			productReference = B433DE91237550AE00F4F49B /* MZAddressSelectedView.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B433DEA4237550BB00F4F49B /* MZAddressSelectedViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B433DEBC237550BB00F4F49B /* Build configuration list for PBXNativeTarget "MZAddressSelectedViewTests" */;
+			buildPhases = (
+				B433DEA1237550BB00F4F49B /* Sources */,
+				B433DEA2237550BB00F4F49B /* Frameworks */,
+				B433DEA3237550BB00F4F49B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B433DEA7237550BB00F4F49B /* PBXTargetDependency */,
+			);
+			name = MZAddressSelectedViewTests;
+			productName = MZAddressSelectedViewTests;
+			productReference = B433DEA5237550BB00F4F49B /* MZAddressSelectedViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B433DEAF237550BB00F4F49B /* MZAddressSelectedViewUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B433DEBF237550BB00F4F49B /* Build configuration list for PBXNativeTarget "MZAddressSelectedViewUITests" */;
+			buildPhases = (
+				B433DEAC237550BB00F4F49B /* Sources */,
+				B433DEAD237550BB00F4F49B /* Frameworks */,
+				B433DEAE237550BB00F4F49B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B433DEB2237550BB00F4F49B /* PBXTargetDependency */,
+			);
+			name = MZAddressSelectedViewUITests;
+			productName = MZAddressSelectedViewUITests;
+			productReference = B433DEB0237550BB00F4F49B /* MZAddressSelectedViewUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B433DE89237550AE00F4F49B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = Mr.Z;
+				TargetAttributes = {
+					B433DE90237550AE00F4F49B = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					B433DEA4237550BB00F4F49B = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = B433DE90237550AE00F4F49B;
+					};
+					B433DEAF237550BB00F4F49B = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = B433DE90237550AE00F4F49B;
+					};
+				};
+			};
+			buildConfigurationList = B433DE8C237550AE00F4F49B /* Build configuration list for PBXProject "MZAddressSelectedView" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B433DE88237550AE00F4F49B;
+			productRefGroup = B433DE92237550AE00F4F49B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B433DE90237550AE00F4F49B /* MZAddressSelectedView */,
+				B433DEA4237550BB00F4F49B /* MZAddressSelectedViewTests */,
+				B433DEAF237550BB00F4F49B /* MZAddressSelectedViewUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B433DE8F237550AE00F4F49B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B433DE9F237550BB00F4F49B /* LaunchScreen.storyboard in Resources */,
+				B433DE9C237550BB00F4F49B /* Assets.xcassets in Resources */,
+				B433DE9A237550AE00F4F49B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B433DEA3237550BB00F4F49B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B433DEAE237550BB00F4F49B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		63F77BED75E9E676E73D165A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MZAddressSelectedView/Pods-MZAddressSelectedView-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MZAddressSelectedView/Pods-MZAddressSelectedView-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MZAddressSelectedView/Pods-MZAddressSelectedView-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B39E2C73508865C8196BA665 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MZAddressSelectedView-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B433DE8D237550AE00F4F49B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B433DEC72375615100F4F49B /* MZAddressModel.swift in Sources */,
+				B433DE97237550AE00F4F49B /* ViewController.swift in Sources */,
+				B433DE95237550AE00F4F49B /* AppDelegate.swift in Sources */,
+				B433DEC42375514700F4F49B /* MZAddressSelectedView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B433DEA1237550BB00F4F49B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B433DEAA237550BB00F4F49B /* MZAddressSelectedViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B433DEAC237550BB00F4F49B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B433DEB5237550BB00F4F49B /* MZAddressSelectedViewUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B433DEA7237550BB00F4F49B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B433DE90237550AE00F4F49B /* MZAddressSelectedView */;
+			targetProxy = B433DEA6237550BB00F4F49B /* PBXContainerItemProxy */;
+		};
+		B433DEB2237550BB00F4F49B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B433DE90237550AE00F4F49B /* MZAddressSelectedView */;
+			targetProxy = B433DEB1237550BB00F4F49B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B433DE98237550AE00F4F49B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B433DE99237550AE00F4F49B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B433DE9D237550BB00F4F49B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B433DE9E237550BB00F4F49B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B433DEB7237550BB00F4F49B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B433DEB8237550BB00F4F49B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B433DEBA237550BB00F4F49B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F26BBEDD8C20CB7758535936 /* Pods-MZAddressSelectedView.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4GKD84VMPR;
+				INFOPLIST_FILE = MZAddressSelectedView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xttj.MZAddressSelected;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B433DEBB237550BB00F4F49B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7657571D8C3BDE58A82974F1 /* Pods-MZAddressSelectedView.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4GKD84VMPR;
+				INFOPLIST_FILE = MZAddressSelectedView/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xttj.MZAddressSelected;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B433DEBD237550BB00F4F49B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4GKD84VMPR;
+				INFOPLIST_FILE = MZAddressSelectedViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xttj.MZAddressSelected.MZAddressSelectedViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MZAddressSelectedView.app/MZAddressSelectedView";
+			};
+			name = Debug;
+		};
+		B433DEBE237550BB00F4F49B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4GKD84VMPR;
+				INFOPLIST_FILE = MZAddressSelectedViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xttj.MZAddressSelected.MZAddressSelectedViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MZAddressSelectedView.app/MZAddressSelectedView";
+			};
+			name = Release;
+		};
+		B433DEC0237550BB00F4F49B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4GKD84VMPR;
+				INFOPLIST_FILE = MZAddressSelectedViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xttj.MZAddressSelected.MZAddressSelectedViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MZAddressSelectedView;
+			};
+			name = Debug;
+		};
+		B433DEC1237550BB00F4F49B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4GKD84VMPR;
+				INFOPLIST_FILE = MZAddressSelectedViewUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.xttj.MZAddressSelected.MZAddressSelectedViewUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MZAddressSelectedView;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B433DE8C237550AE00F4F49B /* Build configuration list for PBXProject "MZAddressSelectedView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B433DEB7237550BB00F4F49B /* Debug */,
+				B433DEB8237550BB00F4F49B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B433DEB9237550BB00F4F49B /* Build configuration list for PBXNativeTarget "MZAddressSelectedView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B433DEBA237550BB00F4F49B /* Debug */,
+				B433DEBB237550BB00F4F49B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B433DEBC237550BB00F4F49B /* Build configuration list for PBXNativeTarget "MZAddressSelectedViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B433DEBD237550BB00F4F49B /* Debug */,
+				B433DEBE237550BB00F4F49B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B433DEBF237550BB00F4F49B /* Build configuration list for PBXNativeTarget "MZAddressSelectedViewUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B433DEC0237550BB00F4F49B /* Debug */,
+				B433DEC1237550BB00F4F49B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B433DE89237550AE00F4F49B /* Project object */;
+}
