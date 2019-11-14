@@ -29,18 +29,41 @@ extension UIView {
         maskLayer.path = maskPath.cgPath
         self.layer.mask = maskLayer
     }
+    
+    /// 设置渐变颜色
+    func setGradientColor(colors: [Any], startPoint: CGPoint, endPoint: CGPoint) {
+        if let layers = self.layer.sublayers {
+            for layer in layers {
+                layer.removeFromSuperlayer()
+            }
+        }
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.bounds
+        // 设置渐变的主颜色（可多个颜色添加）
+        gradientLayer.colors = colors
+        // startPoint与endPoint分别为渐变的起始方向与结束方向，它是以矩形的四个角为基础的，
+        //（0，0）为左上角、（1，0）为右上角、（0，1）为左下角、（1，1）为右下角，默认是值是（0.5，0）和（0.5，1）
+        gradientLayer.startPoint = startPoint
+        gradientLayer.endPoint = endPoint
+        // 将gradientLayer作为子layer添加到主layer上
+        self.layer.insertSublayer(gradientLayer, at: 0)
+    }
 }
 
 class MZAddressSelectedView: UIView {
     
     /// 传递的数据
-    public var callBackBlock: (_ value: String, _ idArr: [String]) -> () = { (value, data) in }
+    public var callBackBlock: (_ modelArr: [MZAddressModel]) -> () = { (modelArr) in }
     
+    /// 设置标题
     public var title: String = "" {
         didSet {
             self.titleLab.text = title
         }
     }
+    
+    /// 设置是否线条渐变
+    public var isGradientLine: Bool = false
     
     private var provinceArr = [MZAddressModel]()    /// 省
     private var cityArr = [MZAddressModel]()        /// 市
@@ -48,12 +71,13 @@ class MZAddressSelectedView: UIView {
     private var regionArr = [MZAddressModel]()      /// 街道/乡镇
     
     private var titleArr = ["请选择"]
-    private var selectedIdArr = [String]() /// 选择的数据index
+    private var selectedDataArr = [MZAddressModel]() /// 选择的数据
+    
     private var titleBtnArr = [UIButton]()
     private var tableViewArr = [UITableView]()
     
     private var isClick: Bool = false /// 判断是滚动还是点击
-
+    
     private lazy var containView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: 300 * kRectScale))
         view.backgroundColor = UIColor.white
@@ -82,7 +106,7 @@ class MZAddressSelectedView: UIView {
     
     private lazy var sepLineView: UIView = {
         let view = UIView(frame: CGRect(x: 16 * kRectScale, y: 40 * kRectScale, width: kScreenWidth - 32 * kRectScale, height: 1))
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.05)
+        view.backgroundColor = UIColor.black.withAlphaComponent(0.02)
         return view
     }()
     
@@ -93,7 +117,7 @@ class MZAddressSelectedView: UIView {
     }()
     
     private lazy var lineView: UIView = {
-        let lineView = UIView.init(frame: .zero)
+        let lineView = UIView(frame: .zero)
         lineView.backgroundColor = kThemeColor
         return lineView
     }()
@@ -145,7 +169,6 @@ class MZAddressSelectedView: UIView {
             let title: String = self.titleArr[i]
             let titleLenth: CGFloat = CGFloat(title.count * 15)
             let titleBtn: UIButton = UIButton(type: .custom)
-            titleBtn.backgroundColor = UIColor.orange
             titleBtn.tag = i
             titleBtn.setTitle(title, for: .normal)
             titleBtn.setTitleColor(UIColor.black, for: .normal)
@@ -209,6 +232,10 @@ class MZAddressSelectedView: UIView {
         self.setupOneTableView(btnTag: btn.tag)
         UIView.animate(withDuration: 0.5) {
             self.lineView.frame = CGRect(x: btn.frame.minX + btn.frame.width * 0.25, y: btn.frame.height - 3, width: btn.frame.width * 0.5, height: 3)
+        }
+        if self.isGradientLine {
+            self.lineView.backgroundColor = UIColor.clear
+            self.lineView.setGradientColor(colors: [kThemeColor.cgColor, kThemeColor.withAlphaComponent(0.2).cgColor], startPoint: CGPoint(x: 0, y: 0.5), endPoint: CGPoint(x: 1, y: 0.5))
         }
         self.titleScrollView.addSubview(self.lineView)
         self.contentScrollView.contentOffset = CGPoint(x: CGFloat(btn.tag) * kScreenWidth, y: 0)
@@ -301,10 +328,10 @@ extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
             // 修改标题
             self.titleArr[tableView.tag] = model.name ?? "请选择"
             // 修改选中的index
-            if self.selectedIdArr.count > 0 {
-                self.selectedIdArr[tableView.tag] = model.code!
+            if self.selectedDataArr.count > 0 {
+                self.selectedDataArr[tableView.tag] = model
             } else {
-                self.selectedIdArr.append(model.code!)
+                self.selectedDataArr.append(model)
             }
             if self.titleBtnArr.count == 1 {
                 self.titleArr.append("请选择")
@@ -316,10 +343,10 @@ extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
             // 修改标题
             self.titleArr[tableView.tag] = model.name ?? "请选择"
             // 修改选中的index
-            if self.selectedIdArr.count > 1 {
-                self.selectedIdArr[tableView.tag] = model.code!
+            if self.selectedDataArr.count > 1 {
+                self.selectedDataArr[tableView.tag] = model
             } else {
-                self.selectedIdArr.append(model.code!)
+                self.selectedDataArr.append(model)
             }
             if self.titleBtnArr.count == 2 {
                 self.titleArr.append("请选择")
@@ -331,10 +358,10 @@ extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
             // 修改标题
             self.titleArr[tableView.tag] = model.name ?? "请选择"
             // 修改选中的index
-            if self.selectedIdArr.count > 2 {
-                self.selectedIdArr[tableView.tag] = model.code!
+            if self.selectedDataArr.count > 2 {
+                self.selectedDataArr[tableView.tag] = model
             } else {
-                self.selectedIdArr.append(model.code!)
+                self.selectedDataArr.append(model)
             }
             if self.titleBtnArr.count == 3 {
                 self.titleArr.append("请选择")
@@ -346,16 +373,15 @@ extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
             // 修改标题
             self.titleArr[tableView.tag] = model.name ?? "请选择"
             // 修改选中的index
-            if self.selectedIdArr.count > 3 {
-                self.selectedIdArr[tableView.tag] = model.code!
+            if self.selectedDataArr.count > 3 {
+                self.selectedDataArr[tableView.tag] = model
             } else {
-                self.selectedIdArr.append(model.code!)
+                self.selectedDataArr.append(model)
             }
             self.setupAllTitle(index: 3)
             self.dismiss()
             // 取数据
-            let value = self.titleArr[0] + " " + self.titleArr[1] + " " + self.titleArr[2] + " " + self.titleArr[3]
-            self.callBackBlock(value, self.selectedIdArr)
+            self.callBackBlock(self.selectedDataArr)
         }
     }
 }

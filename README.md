@@ -4,6 +4,8 @@
 
     let addressSelectedView = MZAddressSelectedView(frame: self.view.bounds)
     addressSelectedView.title = "选择地址"
+    // 添加线条渐变效果
+    addressSelectedView.isGradientLine = true
     addressSelectedView.setupAllTitle(index: 0)
     addressSelectedView.callBackBlock = { (value, data) in
       btn.setTitle(value, for: .normal)
