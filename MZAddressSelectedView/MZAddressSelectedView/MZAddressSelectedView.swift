@@ -2,7 +2,7 @@
 //  MZAddressSelectedView.swift
 //  MZAddressSelectedView
 //
-//  Created by 木木 on 2019/11/8.
+//  Created by Mr.Z on 2019/11/8.
 //  Copyright © 2019 Mr.Z. All rights reserved.
 //
 
@@ -21,6 +21,7 @@ let kRectScale: CGFloat = (kScreenWidth / 375.0)
 let kThemeColor: UIColor = UIColor.red
 
 extension UIView {
+    
     /// 设置某几个角的圆角
     func setCorner(byRoundingCorners corners: UIRectCorner, radii: CGFloat) {
         let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radii, height: radii))
@@ -58,7 +59,7 @@ class MZAddressSelectedView: UIView {
     /// 设置标题
     public var title: String = "" {
         didSet {
-            self.titleLab.text = title
+            self.titleLab.text = self.title
         }
     }
     
@@ -167,7 +168,7 @@ class MZAddressSelectedView: UIView {
         var x: CGFloat = 16 * kRectScale
         for i in 0 ..< self.titleArr.count {
             let title: String = self.titleArr[i]
-            let titleLenth: CGFloat = CGFloat(title.count * 15)
+            let titleLenth: CGFloat = self.stringForWidth(text: title, fontSize: 13, height: 30 * kRectScale)
             let titleBtn: UIButton = UIButton(type: .custom)
             titleBtn.tag = i
             titleBtn.setTitle(title, for: .normal)
@@ -257,6 +258,13 @@ class MZAddressSelectedView: UIView {
                 self.isHidden = true
             }
         }
+    }
+    
+    private func stringForWidth(text: String, fontSize: CGFloat = 15.0, height: CGFloat) -> CGFloat {
+        let font = UIFont.systemFont(ofSize: fontSize)
+        let size = CGSize(width: CGFloat(MAXFLOAT), height: height)
+        let rect = NSString(string: text).boundingRect(with: size, options: [.usesFontLeading, .usesLineFragmentOrigin], attributes: [.font: font], context: nil)
+        return ceil(rect.width)
     }
 }
 

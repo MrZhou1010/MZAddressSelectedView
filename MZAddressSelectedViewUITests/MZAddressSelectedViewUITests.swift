@@ -2,7 +2,7 @@
 //  MZAddressSelectedViewUITests.swift
 //  MZAddressSelectedViewUITests
 //
-//  Created by 木木 on 2019/11/8.
+//  Created by Mr.Z on 2019/11/8.
 //  Copyright © 2019 Mr.Z. All rights reserved.
 //
 
