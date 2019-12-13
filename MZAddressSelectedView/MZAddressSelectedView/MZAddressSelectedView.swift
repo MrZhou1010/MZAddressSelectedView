@@ -79,6 +79,7 @@ class MZAddressSelectedView: UIView {
     
     private var isClick: Bool = false /// 判断是滚动还是点击
     
+    // MARK: - Lazy
     private lazy var containView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: 300 * kRectScale))
         view.backgroundColor = UIColor.white
@@ -132,6 +133,7 @@ class MZAddressSelectedView: UIView {
         return scrollView
     }()
     
+    // MARK: - 初始化和UI
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.black.withAlphaComponent(0.5)
@@ -220,6 +222,7 @@ class MZAddressSelectedView: UIView {
         }
     }
     
+    // MARK: - Fuction
     @objc private func cancelBtnClicked(btn: UIButton) {
         self.dismiss()
     }
@@ -269,6 +272,7 @@ class MZAddressSelectedView: UIView {
 }
 
 extension MZAddressSelectedView: UIScrollViewDelegate {
+    // MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.contentScrollView {
             let offset: CGFloat = scrollView.contentOffset.x / kScreenWidth
@@ -287,6 +291,7 @@ extension MZAddressSelectedView: UIScrollViewDelegate {
 }
 
 extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
+    // MARK: - UITableViewDelegate, UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
