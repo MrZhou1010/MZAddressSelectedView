@@ -117,7 +117,6 @@
 		B433DE93237550AE00F4F49B /* MZAddressSelectedView */ = {
 			isa = PBXGroup;
 			children = (
-				B433DEC92375653300F4F49B /* Tools */,
 				B433DEC52375611600F4F49B /* Model */,
 				B433DEC22375510200F4F49B /* MZAddressSelectedView */,
 				B433DE94237550AE00F4F49B /* AppDelegate.swift */,
@@ -162,13 +161,6 @@
 				B433DEC62375615100F4F49B /* MZAddressModel.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		B433DEC92375653300F4F49B /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Tools;
 			sourceTree = "<group>";
 		};
 		C7166B3589B927784805C536 /* Frameworks */ = {

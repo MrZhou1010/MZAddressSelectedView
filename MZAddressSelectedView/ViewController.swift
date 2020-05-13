@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,13 +22,8 @@ class ViewController: UIViewController {
         addressBtn.setTitleColor(UIColor.black, for: .normal)
         addressBtn.addTarget(self, action: #selector(btnClick(btn:)), for: .touchUpInside)
         self.view.addSubview(addressBtn)
-        
-        let view = UIView(frame: CGRect(x: 16, y: 300, width: UIScreen.main.bounds.size.width - 32, height: 10))
-        view.backgroundColor = UIColor.clear
-        view.setGradientColor(colors: [UIColor.red.cgColor, UIColor.red.withAlphaComponent(0.1).cgColor], startPoint: CGPoint(x: 0, y: 0.5), endPoint: CGPoint(x: 1, y: 0.5))
-        self.view.addSubview(view)
     }
-
+    
     @objc private func btnClick(btn: UIButton) {
         let addressSelectedView = MZAddressSelectedView(frame: self.view.bounds)
         addressSelectedView.title = "选择地址"
@@ -45,4 +40,3 @@ class ViewController: UIViewController {
         addressSelectedView.show()
     }
 }
-
