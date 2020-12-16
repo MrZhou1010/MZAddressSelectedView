@@ -10,20 +10,20 @@ import UIKit
 import MJExtension
 
 /// 屏幕尺寸
-let kScreenSize: CGSize = UIScreen.main.bounds.size
+fileprivate let kScreenSize: CGSize = UIScreen.main.bounds.size
 /// 屏幕宽度
-let kScreenWidth: CGFloat = UIScreen.main.bounds.size.width
+fileprivate let kScreenWidth: CGFloat = UIScreen.main.bounds.size.width
 /// 屏幕高度
-let kScreenHeight: CGFloat = UIScreen.main.bounds.size.height
+fileprivate let kScreenHeight: CGFloat = UIScreen.main.bounds.size.height
 /// 适配比例
-let kRectScale: CGFloat = (kScreenWidth / 375.0)
+fileprivate let kRectScale: CGFloat = (kScreenWidth / 375.0)
 /// 主题色
-let kThemeColor: UIColor = UIColor.red
+fileprivate let kThemeColor: UIColor = UIColor.red
 
 extension UIView {
     
     /// 设置某几个角的圆角
-    func setCorner(byRoundingCorners corners: UIRectCorner, radii: CGFloat) {
+    public func setCorner(byRoundingCorners corners: UIRectCorner, radii: CGFloat) {
         let maskPath = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radii, height: radii))
         let maskLayer = CAShapeLayer()
         maskLayer.frame = self.bounds
@@ -32,7 +32,7 @@ extension UIView {
     }
     
     /// 设置渐变颜色
-    func setGradientColor(colors: [Any], startPoint: CGPoint, endPoint: CGPoint) {
+    public func setGradientColor(colors: [Any], startPoint: CGPoint, endPoint: CGPoint) {
         if let layers = self.layer.sublayers {
             for layer in layers {
                 layer.removeFromSuperlayer()
@@ -40,10 +40,10 @@ extension UIView {
         }
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.bounds
-        // 设置渐变的主颜色（可多个颜色添加）
+        // 设置渐变的主颜色(可多个颜色添加)
         gradientLayer.colors = colors
-        // startPoint与endPoint分别为渐变的起始方向与结束方向，它是以矩形的四个角为基础的，
-        //（0，0）为左上角、（1，0）为右上角、（0，1）为左下角、（1，1）为右下角，默认是值是（0.5，0）和（0.5，1）
+        // startPoint与endPoint分别为渐变的起始方向与结束方向,它是以矩形的四个角为基础的
+        // (0,0)为左上角、(1,0)为右上角、(0,1)为左下角、(1,1)为右下角,默认是值是(0.5,0)和(0.5,1)
         gradientLayer.startPoint = startPoint
         gradientLayer.endPoint = endPoint
         // 将gradientLayer作为子layer添加到主layer上
@@ -66,18 +66,24 @@ class MZAddressSelectedView: UIView {
     /// 设置是否线条渐变
     public var isGradientLine: Bool = false
     
-    private var provinceArr = [MZAddressModel]()    /// 省
-    private var cityArr = [MZAddressModel]()        /// 市
-    private var countyArr = [MZAddressModel]()      /// 区/县
-    private var regionArr = [MZAddressModel]()      /// 街道/乡镇
-    
+    /// 省
+    private var provinceArr = [MZAddressModel]()
+    /// 市
+    private var cityArr = [MZAddressModel]()
+    /// 区/县
+    private var countyArr = [MZAddressModel]()
+    /// 街道/乡镇
+    private var regionArr = [MZAddressModel]()
+    /// 标题数组
     private var titleArr = ["请选择"]
-    private var selectedDataArr = [MZAddressModel]() /// 选择的数据
-    
+    /// 选择的数据数组
+    private var selectedDataArr = [MZAddressModel]()
+    /// 按钮数组
     private var titleBtnArr = [UIButton]()
+    /// 数据列表数组
     private var tableViewArr = [UITableView]()
-    
-    private var isClick: Bool = false /// 判断是滚动还是点击
+    /// 判断是滚动还是点击
+    private var isClick: Bool = false
     
     // MARK: - Lazy
     private lazy var containView: UIView = {
@@ -326,7 +332,7 @@ extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
         } else if tableView.tag == 3 {
             model = self.regionArr[indexPath.row]
         }
-        cell?.textLabel?.text = model.name ?? ""
+        cell?.textLabel?.text = model.name
         cell?.textLabel?.font = UIFont.systemFont(ofSize: 13)
         cell?.textLabel?.textColor = UIColor.black
         cell?.selectionStyle = .none
@@ -339,7 +345,7 @@ extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
         if tableView.tag == 0 {
             model = self.provinceArr[indexPath.row]
             // 修改标题
-            self.titleArr[tableView.tag] = model.name ?? "请选择"
+            self.titleArr[tableView.tag] = model.name == "" ? "请选择" : model.name
             // 修改选中的index
             if self.selectedDataArr.count > 0 {
                 self.selectedDataArr[tableView.tag] = model
@@ -350,11 +356,11 @@ extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
                 self.titleArr.append("请选择")
             }
             // 网络请求获取市
-            self.getAreaData(tag: tableView.tag + 1, code: model.code!)
+            self.getAreaData(tag: tableView.tag + 1, code: model.code)
         } else if tableView.tag == 1 {
             model = self.cityArr[indexPath.row]
             // 修改标题
-            self.titleArr[tableView.tag] = model.name ?? "请选择"
+            self.titleArr[tableView.tag] = model.name == "" ? "请选择" : model.name
             // 修改选中的index
             if self.selectedDataArr.count > 1 {
                 self.selectedDataArr[tableView.tag] = model
@@ -365,11 +371,11 @@ extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
                 self.titleArr.append("请选择")
             }
             // 网络请求获取区/县
-            self.getAreaData(tag: tableView.tag + 1, code: model.code!)
+            self.getAreaData(tag: tableView.tag + 1, code: model.code)
         } else if tableView.tag == 2 {
             model = self.countyArr[indexPath.row]
             // 修改标题
-            self.titleArr[tableView.tag] = model.name ?? "请选择"
+            self.titleArr[tableView.tag] = model.name == "" ? "请选择" : model.name
             // 修改选中的index
             if self.selectedDataArr.count > 2 {
                 self.selectedDataArr[tableView.tag] = model
@@ -380,11 +386,11 @@ extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
                 self.titleArr.append("请选择")
             }
             // 网络请求获取街道/乡镇
-            self.getAreaData(tag: tableView.tag + 1, code: model.code!)
+            self.getAreaData(tag: tableView.tag + 1, code: model.code)
         } else if tableView.tag == 3 {
             model = self.regionArr[indexPath.row]
             // 修改标题
-            self.titleArr[tableView.tag] = model.name ?? "请选择"
+            self.titleArr[tableView.tag] = model.name == "" ? "请选择" : model.name
             // 修改选中的index
             if self.selectedDataArr.count > 3 {
                 self.selectedDataArr[tableView.tag] = model
@@ -464,7 +470,7 @@ extension MZAddressSelectedView {
         case 1:
             // 获取市
             self.cityArr.removeAll()
-            WPHomeVM.shareManager.getArea(dic: ["pid":code]) { (data) in
+            WPHomeVM.shareManager.getArea(dic: ["pid": code]) { (data) in
                 for dic in data {
                     let model = MZAddressModel.mj_object(withKeyValues: dic)
                     self.cityArr.append(model!)
@@ -475,7 +481,7 @@ extension MZAddressSelectedView {
         case 2:
             // 获取区/县
             self.countyArr.removeAll()
-            WPHomeVM.shareManager.getArea(dic: ["pid":code]) { (data) in
+            WPHomeVM.shareManager.getArea(dic: ["pid": code]) { (data) in
                 for dic in data {
                     let model = MZAddressModel.mj_object(withKeyValues: dic)
                     self.countyArr.append(model!)
@@ -486,7 +492,7 @@ extension MZAddressSelectedView {
         case 3:
             // 获取街道/乡镇
             self.regionArr.removeAll()
-            WPHomeVM.shareManager.getArea(dic: ["pid":code]) { (data) in
+            WPHomeVM.shareManager.getArea(dic: ["pid": code]) { (data) in
                 for dic in data {
                     let model = MZAddressModel.mj_object(withKeyValues: dic)
                     self.regionArr.append(model!)
@@ -500,4 +506,3 @@ extension MZAddressSelectedView {
     }
      */
 }
-
