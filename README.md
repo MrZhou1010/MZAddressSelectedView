@@ -25,4 +25,4 @@
 // 获取省市县街道方法
 
     注:通过修改该方法获取本地数据或者网络请求的数据
-    fileprivate func getAreaData(tag: Int, code: String = "")
+    getAreaData(tag: Int, code: String = "")

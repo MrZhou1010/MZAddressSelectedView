@@ -32,7 +32,7 @@ extension UIView {
     }
     
     /// 设置渐变颜色
-    public func setGradientColor(colors: [Any], startPoint: CGPoint, endPoint: CGPoint) {
+    public func setGradientColor(_ colors: [CGColor], startPoint: CGPoint, endPoint: CGPoint) {
         if let layers = self.layer.sublayers {
             for layer in layers {
                 layer.removeFromSuperlayer()
@@ -43,7 +43,8 @@ extension UIView {
         // 设置渐变的主颜色(可多个颜色添加)
         gradientLayer.colors = colors
         // startPoint与endPoint分别为渐变的起始方向与结束方向,它是以矩形的四个角为基础的
-        // (0,0)为左上角、(1,0)为右上角、(0,1)为左下角、(1,1)为右下角,默认是值是(0.5,0)和(0.5,1)
+        // (0,0)为左上角 (1,0)为右上角 (0,1)为左下角 (1,1)为右下角
+        // 默认是值是(0.5,0)和(0.5,1)
         gradientLayer.startPoint = startPoint
         gradientLayer.endPoint = endPoint
         // 将gradientLayer作为子layer添加到主layer上
@@ -89,7 +90,7 @@ class MZAddressSelectedView: UIView {
     private lazy var containView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: 300 * kRectScale))
         view.backgroundColor = UIColor.white
-        view.setCorner(byRoundingCorners: [.topLeft, .topRight], radii: 5.0)
+        view.setCorner(byRoundingCorners: [.topLeft, .topRight], radii: 5.0 * kRectScale)
         return view
     }()
     
@@ -174,8 +175,7 @@ class MZAddressSelectedView: UIView {
         }
         self.titleBtnArr.removeAll()
         var x: CGFloat = 16 * kRectScale
-        for i in 0 ..< self.titleArr.count {
-            let title: String = self.titleArr[i]
+        for (i, title) in self.titleArr.enumerated() {
             let titleLenth: CGFloat = self.stringForWidth(text: title, fontSize: 13, height: 30 * kRectScale)
             let titleBtn: UIButton = UIButton(type: .custom)
             titleBtn.tag = i
@@ -241,11 +241,11 @@ class MZAddressSelectedView: UIView {
         self.isClick = true
         self.setupOneTableView(btnTag: btn.tag)
         UIView.animate(withDuration: 0.5) {
-            self.lineView.frame = CGRect(x: btn.frame.minX + btn.frame.width * 0.25, y: btn.frame.height - 3, width: btn.frame.width * 0.5, height: 3)
+            self.lineView.frame = CGRect(x: btn.frame.minX + btn.frame.width * 0.25, y: btn.frame.height - 3 * kRectScale, width: btn.frame.width * 0.5, height: 3 * kRectScale)
         }
         if self.isGradientLine {
             self.lineView.backgroundColor = UIColor.clear
-            self.lineView.setGradientColor(colors: [kThemeColor.cgColor, kThemeColor.withAlphaComponent(0.2).cgColor], startPoint: CGPoint(x: 0, y: 0.5), endPoint: CGPoint(x: 1, y: 0.5))
+            self.lineView.setGradientColor([kThemeColor.cgColor, kThemeColor.withAlphaComponent(0.2).cgColor], startPoint: CGPoint(x: 0, y: 0.5), endPoint: CGPoint(x: 1.0, y: 0.5))
         }
         self.titleScrollView.addSubview(self.lineView)
         self.contentScrollView.contentOffset = CGPoint(x: CGFloat(btn.tag) * kScreenWidth, y: 0)
@@ -256,7 +256,11 @@ class MZAddressSelectedView: UIView {
         UIView.animate(withDuration: 0.5) {
             self.containView.frame = CGRect(x: 0, y: kScreenHeight - 300 * kRectScale, width: kScreenWidth, height: 300 * kRectScale)
         }
-        UIApplication.shared.keyWindow?.addSubview(self)
+        if #available(iOS 13.0, *) {
+            UIApplication.shared.windows.last?.addSubview(self)
+        } else {
+            UIApplication.shared.keyWindow?.addSubview(self)
+        }
     }
     
     private func dismiss() {
@@ -287,7 +291,7 @@ extension MZAddressSelectedView: UIScrollViewDelegate {
                 self.isClick = false
             }
             if self.isClick == false {
-                if offset == CGFloat(offsetIndex)  {
+                if offset == CGFloat(offsetIndex) {
                     let titleBtn: UIButton = self.titleBtnArr[offsetIndex]
                     self.titleBtnClicked(btn: titleBtn)
                 }
