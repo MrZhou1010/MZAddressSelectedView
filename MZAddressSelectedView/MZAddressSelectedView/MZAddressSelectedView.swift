@@ -32,23 +32,29 @@ extension UIView {
     }
     
     /// 设置渐变颜色
-    public func setGradientColor(_ colors: [CGColor], startPoint: CGPoint, endPoint: CGPoint) {
-        if let layers = self.layer.sublayers {
-            for layer in layers {
-                layer.removeFromSuperlayer()
-            }
-        }
+    public func setGradientColor(colors: [CGColor], startPoint: CGPoint, endPoint: CGPoint, corner: CGFloat) {
+        self.removeAllSublayers()
         let gradientLayer = CAGradientLayer()
+        gradientLayer.cornerRadius = corner
         gradientLayer.frame = self.bounds
         // 设置渐变的主颜色(可多个颜色添加)
         gradientLayer.colors = colors
-        // startPoint与endPoint分别为渐变的起始方向与结束方向,它是以矩形的四个角为基础的
+        // startPoint与endPoint分别为渐变的起始方向与结束方向, 它是以矩形的四个角为基础的,默认是值是(0.5,0)和(0.5,1)
         // (0,0)为左上角 (1,0)为右上角 (0,1)为左下角 (1,1)为右下角
-        // 默认是值是(0.5,0)和(0.5,1)
         gradientLayer.startPoint = startPoint
         gradientLayer.endPoint = endPoint
         // 将gradientLayer作为子layer添加到主layer上
         self.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    /// 移除渐变
+    public func removeAllSublayers() {
+        guard let sublayers =  self.layer.sublayers else {
+            return
+        }
+        for layer in sublayers {
+            layer.removeFromSuperlayer()
+        }
     }
 }
 
@@ -60,7 +66,7 @@ class MZAddressSelectedView: UIView {
     /// 设置标题
     public var title: String = "" {
         didSet {
-            self.titleLab.text = self.title
+            self.titleLabel.text = self.title
         }
     }
     
@@ -94,13 +100,13 @@ class MZAddressSelectedView: UIView {
         return view
     }()
     
-    private lazy var titleLab: UILabel = {
-        let lab = UILabel(frame: CGRect(x: 16 * kRectScale, y: 10 * kRectScale, width: 160 * kRectScale, height: 30 * kRectScale))
-        lab.text = "请选择地址"
-        lab.textColor = UIColor.black
-        lab.font = UIFont.systemFont(ofSize: 18)
-        lab.textAlignment = .left
-        return lab
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 16 * kRectScale, y: 10 * kRectScale, width: 160 * kRectScale, height: 30 * kRectScale))
+        label.text = "请选择地址"
+        label.textColor = UIColor.black
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textAlignment = .left
+        return label
     }()
     
     private lazy var cancelBtn: UIButton = {
@@ -148,21 +154,21 @@ class MZAddressSelectedView: UIView {
         self.setupUI()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         let currentPoint = touches.first?.location(in: self)
         if !self.containView.frame.contains(currentPoint ?? CGPoint()) {
-            self.dismiss()
+            self.dismiss(animated: true)
         }
     }
     
     private func setupUI() {
         self.addSubview(self.containView)
-        self.containView.addSubview(self.titleLab)
+        self.containView.addSubview(self.titleLabel)
         self.containView.addSubview(self.cancelBtn)
         self.containView.addSubview(self.sepLineView)
         self.containView.addSubview(self.titleScrollView)
@@ -230,7 +236,7 @@ class MZAddressSelectedView: UIView {
     
     // MARK: - Fuction
     @objc private func cancelBtnClicked(btn: UIButton) {
-        self.dismiss()
+        self.dismiss(animated: true)
     }
     
     @objc private func titleBtnClicked(btn: UIButton) {
@@ -245,31 +251,40 @@ class MZAddressSelectedView: UIView {
         }
         if self.isGradientLine {
             self.lineView.backgroundColor = UIColor.clear
-            self.lineView.setGradientColor([kThemeColor.cgColor, kThemeColor.withAlphaComponent(0.2).cgColor], startPoint: CGPoint(x: 0, y: 0.5), endPoint: CGPoint(x: 1.0, y: 0.5))
+            self.lineView.setGradientColor(colors: [kThemeColor.cgColor, kThemeColor.withAlphaComponent(0.2).cgColor], startPoint: CGPoint(x: 0, y: 0.5), endPoint: CGPoint(x: 1.0, y: 0.5), corner: 2 * kRectScale)
         }
         self.titleScrollView.addSubview(self.lineView)
         self.contentScrollView.contentOffset = CGPoint(x: CGFloat(btn.tag) * kScreenWidth, y: 0)
     }
     
-    public func show() {
+    public func show(animated: Bool = true) {
         self.isHidden = false
-        UIView.animate(withDuration: 0.5) {
+        if animated {
+            UIView.animate(withDuration: 0.5) {
+                self.containView.frame = CGRect(x: 0, y: kScreenHeight - 300 * kRectScale, width: kScreenWidth, height: 300 * kRectScale)
+            }
+        } else {
             self.containView.frame = CGRect(x: 0, y: kScreenHeight - 300 * kRectScale, width: kScreenWidth, height: 300 * kRectScale)
         }
         if #available(iOS 13.0, *) {
-            UIApplication.shared.windows.last?.addSubview(self)
+            UIApplication.shared.windows.filter({ $0.isKeyWindow }).last?.addSubview(self)
         } else {
             UIApplication.shared.keyWindow?.addSubview(self)
         }
     }
     
-    private func dismiss() {
-        UIView.animate(withDuration: 0.5, animations: {
-            self.containView.frame = CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: 300 * kRectScale)
-        }) { (finish) in
-            if finish {
-                self.isHidden = true
+    private func dismiss(animated: Bool = true) {
+        if animated {
+            UIView.animate(withDuration: 0.5) {
+                self.containView.frame = CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: 300 * kRectScale)
+            } completion: { (finish) in
+                if finish {
+                    self.isHidden = true
+                }
             }
+        } else {
+            self.containView.frame = CGRect(x: 0, y: kScreenHeight, width: kScreenWidth, height: 300 * kRectScale)
+            self.isHidden = true
         }
     }
     
@@ -281,8 +296,9 @@ class MZAddressSelectedView: UIView {
     }
 }
 
+// MARK: - UIScrollViewDelegate
 extension MZAddressSelectedView: UIScrollViewDelegate {
-    // MARK: - UIScrollViewDelegate
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.contentScrollView {
             let offset: CGFloat = scrollView.contentOffset.x / kScreenWidth
@@ -300,8 +316,9 @@ extension MZAddressSelectedView: UIScrollViewDelegate {
     }
 }
 
+// MARK: - UITableViewDelegate, UITableViewDataSource
 extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
-    // MARK: - UITableViewDelegate, UITableViewDataSource
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -402,7 +419,7 @@ extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
                 self.selectedDataArr.append(model)
             }
             self.setupAllTitle(index: 3)
-            self.dismiss()
+            self.dismiss(animated: true)
             // 取数据
             self.callBackBlock(self.selectedDataArr)
         }
@@ -410,6 +427,7 @@ extension MZAddressSelectedView: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension MZAddressSelectedView {
+    
     /// 本地获取省市县街道
     fileprivate func getAreaData(tag: Int, code: String = "") {
         switch tag {

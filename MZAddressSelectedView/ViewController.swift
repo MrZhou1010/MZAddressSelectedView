@@ -40,6 +40,6 @@ class ViewController: UIViewController {
             value = value.trimmingCharacters(in: .whitespaces)
             btn.setTitle(value, for: .normal)
         }
-        addressSelectedView.show()
+        addressSelectedView.show(animated: true)
     }
 }

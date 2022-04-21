@@ -9,6 +9,7 @@
 import UIKit
 
 class MZAddressModel: NSObject {
+    
     /// 编码
     @objc var code: String = ""
     /// 名称
